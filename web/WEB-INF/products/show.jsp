@@ -12,7 +12,18 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<body>
-
+<body class="container">
+<table class="table table-bordered">
+    <tr>
+        <th>Name</th>
+        <th>Parameter</th>
+    </tr>
+    <c:forEach var="characteristic" items="${characteristics}">
+        <tr>
+            <td>${characteristic.name}</td>
+            <td>${characteristic.parameter}</td>
+        </tr>
+    </c:forEach>
+</table>
 </body>
 </html>

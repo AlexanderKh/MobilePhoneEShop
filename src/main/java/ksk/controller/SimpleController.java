@@ -27,12 +27,12 @@ public class SimpleController {
         return "index";
     }
 
-    @RequestMapping("{id}/")
+    @RequestMapping("{id}")
     public String show(@PathVariable("id") Integer productID,
                        ModelMap model){
         Product product = productDAO.getProduct(productID);
         List<Characteristic> characteristics = characteristicDAO.getCharacteristicsByProduct(product);
-
+        System.out.println(characteristics.size());
         model.addAttribute("product", product);
         model.addAttribute("characteristics", characteristics);
 
