@@ -27,4 +27,17 @@ public class ProductDAO implements ksk.dao.ProductDAO {
     public Product getProduct(int id) {
         return (Product) sessionFactory.getCurrentSession().get(Product.class, id);
     }
+
+    @Transactional
+    public void saveProduct(Product product) {
+        sessionFactory.getCurrentSession().save(product);
+    }
+
+    @Transactional
+    public void removeProductByID(Integer productID) {
+        Session session = sessionFactory.getCurrentSession();
+        SQLQuery sqlQuery = session.createSQLQuery("DELETE FROM PRODUCT WHERE ID = :productID");
+        sqlQuery.setParameter("productID", productID);
+        sqlQuery.executeUpdate();
+    }
 }

@@ -9,4 +9,8 @@ public interface ProductDAO {
     List<Product> getProducts();
 
     Product getProduct(int id);
+
+    void saveProduct(Product product);
+
+    void removeProductByID(Integer productID);
 }
