@@ -1,20 +1,19 @@
 package ksk.entity;
 
+import ksk.dao.BrandDAO;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import java.io.Serializable;
 
 @Entity
-public class Characteristic implements Serializable {
+public class Brand implements Serializable {
     @Id
     @GeneratedValue
     private int id;
     private String name;
-    private String parameter;
-    @ManyToOne
-    private Product product;
 
     public int getId() {
         return id;
@@ -32,19 +31,8 @@ public class Characteristic implements Serializable {
         this.name = name;
     }
 
-    public String getParameter() {
-        return parameter;
-    }
-
-    public void setParameter(String parameter) {
-        this.parameter = parameter;
-    }
-
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
+    @Override
+    public String toString(){
+        return name;
     }
 }

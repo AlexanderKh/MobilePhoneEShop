@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <table class="table table-bordered">
         <tr>
+            <th>Brand</th>
             <th>Name</th>
             <th>Price</th>
             <th>Quantity</th>
@@ -8,6 +9,7 @@
         </tr>
         <c:forEach var="product" items="${products}">
             <tr>
+                <td>${product.brand}</td>
                 <td>${product.name}</td>
                 <td>${product.price}</td>
                 <td>${product.quantity}</td>

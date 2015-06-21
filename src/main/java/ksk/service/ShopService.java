@@ -1,5 +1,6 @@
 package ksk.service;
 
+import ksk.entity.Brand;
 import ksk.entity.Characteristic;
 import ksk.entity.Product;
 
@@ -12,7 +13,11 @@ public interface ShopService {
 
     Product getProductByID(Integer productID);
 
+    void addProduct(Product product, Integer brandID);
+
     void addProduct(Product product);
 
     void removeProductByID(Integer productID);
+
+    List<Brand> getBrands();
 }

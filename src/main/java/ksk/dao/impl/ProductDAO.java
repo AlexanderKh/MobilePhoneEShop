@@ -19,7 +19,7 @@ public class ProductDAO implements ksk.dao.ProductDAO {
     @Transactional
     public List<Product> getProducts() {
         Session session = sessionFactory.getCurrentSession();
-        SQLQuery sqlQuery = session.createSQLQuery("SELECT * FROM PRODUCT");
+        SQLQuery sqlQuery = session.createSQLQuery("SELECT PRODUCT.* FROM PRODUCT");
         return sqlQuery.addEntity(Product.class).list();
     }
 

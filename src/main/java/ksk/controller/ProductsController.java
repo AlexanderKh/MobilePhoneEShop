@@ -1,15 +1,14 @@
 package ksk.controller;
 
+import ksk.entity.Brand;
 import ksk.entity.Characteristic;
 import ksk.entity.Product;
 import ksk.service.ShopService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -43,12 +42,17 @@ public class ProductsController {
     @RequestMapping(value = "new", method = RequestMethod.GET)
     public String newProduct(ModelMap modelMap){
         Product product = new Product();
+        List<Brand> brands = shopService.getBrands();
+
+        modelMap.addAttribute("brands", brands);
         modelMap.addAttribute("product", product);
         return "products/new";
     }
 
     @RequestMapping(value = "new", method = RequestMethod.POST)
-    public String create(@ModelAttribute Product product){
+    public String create(@ModelAttribute Product product,
+                         BindingResult bindingResult,
+                         @RequestParam("brand") Integer brandID){
         shopService.addProduct(product);
 
         return "redirect:/products";

@@ -1,16 +1,22 @@
 package ksk.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 @Entity
-public class Product {
+public class Product implements Serializable{
     @Id
+    @GeneratedValue
     private int id;
     private String name;
     private BigDecimal price;
     private int quantity;
+    @ManyToOne
+    private Brand brand;
 
     public int getId() {
         return id;
@@ -42,5 +48,13 @@ public class Product {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public Brand getBrand() {
+        return brand;
+    }
+
+    public void setBrand(Brand brand) {
+        this.brand = brand;
     }
 }
