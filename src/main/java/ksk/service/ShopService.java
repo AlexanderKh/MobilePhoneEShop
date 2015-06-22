@@ -1,7 +1,5 @@
 package ksk.service;
 
-import ksk.entity.Brand;
-import ksk.entity.Characteristic;
 import ksk.entity.Product;
 
 import java.util.List;

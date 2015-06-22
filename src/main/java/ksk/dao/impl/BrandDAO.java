@@ -1,6 +1,5 @@
 package ksk.dao.impl;
 
-import ksk.entity.Brand;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

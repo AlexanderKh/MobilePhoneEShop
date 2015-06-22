@@ -1,7 +1,5 @@
 package ksk.controller;
 
-import ksk.entity.Brand;
-import ksk.entity.Characteristic;
 import ksk.entity.Product;
 import ksk.service.ShopService;
 import org.springframework.beans.factory.annotation.Autowired;

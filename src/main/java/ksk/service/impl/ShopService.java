@@ -3,8 +3,6 @@ package ksk.service.impl;
 import ksk.dao.BrandDAO;
 import ksk.dao.CharacteristicDAO;
 import ksk.dao.ProductDAO;
-import ksk.entity.Brand;
-import ksk.entity.Characteristic;
 import ksk.entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

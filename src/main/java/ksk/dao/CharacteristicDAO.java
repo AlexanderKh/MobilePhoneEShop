@@ -1,6 +1,5 @@
 package ksk.dao;
 
-import ksk.entity.Characteristic;
 import ksk.entity.Product;
 
 import java.util.List;

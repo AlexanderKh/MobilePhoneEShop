@@ -1,6 +1,5 @@
 package ksk.dao.impl;
 
-import ksk.entity.Characteristic;
 import ksk.entity.Product;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
