@@ -1,7 +1,5 @@
 package ksk.service.impl;
 
-import ksk.dao.BrandDAO;
-import ksk.dao.CharacteristicDAO;
 import ksk.dao.ProductDAO;
 import ksk.entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,27 +11,18 @@ import java.util.List;
 public class ShopService implements ksk.service.ShopService{
     @Autowired
     ProductDAO productDAO;
-    @Autowired
-    CharacteristicDAO characteristicDAO;
-    @Autowired
-    BrandDAO brandDAO;
 
 
     public List<Product> getProducts() {
         return productDAO.getProducts();
     }
 
-    public List<Characteristic> getCharacteristicsByProduct(Product product) {
-        return characteristicDAO.getCharacteristicsByProduct(product);
-    }
 
     public Product getProductByID(Integer productID) {
         return productDAO.getProduct(productID);
     }
 
     public void addProduct(Product product, Integer brandID) {
-        Brand brand = brandDAO.getBrand(brandID);
-        product.setBrand(brand);
         productDAO.saveProduct(product);
     }
 
@@ -45,7 +34,4 @@ public class ShopService implements ksk.service.ShopService{
         productDAO.removeProductByID(productID);
     }
 
-    public List<Brand> getBrands() {
-        return brandDAO.getBrands();
-    }
 }

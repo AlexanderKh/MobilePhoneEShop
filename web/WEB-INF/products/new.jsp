@@ -4,13 +4,8 @@
            modelAttribute="product"
            cssClass="form-horizontal">
     <div class="form-group">
-        <label for="brand">Brand</label>
-        <%--<form:select path="brand" cssClass="form-control" items="${brands}" />--%>
-        <select id="brand" name="brand" class="form-control" >
-            <c:forEach var="brand" items="${brands}">
-                <option value="${brand.id}">${brand.name}</option>
-            </c:forEach>
-        </select>
+        <label for="brand">Name</label>
+        <form:input path="brand" cssClass="form-control" />
     </div>
     <div class="form-group">
         <label for="name">Name</label>
@@ -19,10 +14,6 @@
     <div class="form-group">
         <label for="price">Price</label>
         <form:input path="price" cssClass="form-control" />
-    </div>
-    <div class="form-group">
-        <label for="quantity">Quantity</label>
-        <form:input path="quantity" cssClass="form-control" />
     </div>
     <div class="form-group">
         <form:button class="btn btn-success">Add</form:button>

@@ -29,10 +29,8 @@ public class ProductsController {
     public String show(@PathVariable("id") Integer productID,
                        ModelMap model){
         Product product = shopService.getProductByID(productID);
-        List<Characteristic> characteristics = shopService.getCharacteristicsByProduct(product);
 
         model.addAttribute("product", product);
-        model.addAttribute("characteristics", characteristics);
 
         return "products/show";
     }
@@ -40,17 +38,14 @@ public class ProductsController {
     @RequestMapping(value = "new", method = RequestMethod.GET)
     public String newProduct(ModelMap modelMap){
         Product product = new Product();
-        List<Brand> brands = shopService.getBrands();
 
-        modelMap.addAttribute("brands", brands);
         modelMap.addAttribute("product", product);
         return "products/new";
     }
 
     @RequestMapping(value = "new", method = RequestMethod.POST)
     public String create(@ModelAttribute Product product,
-                         BindingResult bindingResult,
-                         @RequestParam("brand") Integer brandID){
+                         BindingResult bindingResult){
         shopService.addProduct(product);
 
         return "redirect:/products";

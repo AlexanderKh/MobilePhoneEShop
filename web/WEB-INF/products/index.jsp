@@ -12,10 +12,6 @@
                 <td>${product.brand}</td>
                 <td>${product.name}</td>
                 <td>${product.price}</td>
-                <td>${product.quantity}</td>
-                <td>
-                    <a href="/products/${product.id}" class="btn btn-xs btn-info">Show Characteristics</a>
-                </td>
                 <td>
                     <form action="/products/${product.id}/delete"
                           style="margin-bottom: 0px"

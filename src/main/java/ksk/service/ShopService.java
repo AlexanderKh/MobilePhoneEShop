@@ -7,8 +7,6 @@ import java.util.List;
 public interface ShopService {
     List<Product> getProducts();
 
-    List<Characteristic> getCharacteristicsByProduct(Product product);
-
     Product getProductByID(Integer productID);
 
     void addProduct(Product product, Integer brandID);
@@ -17,5 +15,5 @@ public interface ShopService {
 
     void removeProductByID(Integer productID);
 
-    List<Brand> getBrands();
+
 }

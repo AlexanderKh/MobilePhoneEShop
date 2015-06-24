@@ -6,27 +6,27 @@
 
     <!--Basic template-->
 
-    <definition name="layout" template="/WEB-INF/layout/layout.jsp">
+    <definition name="layout" template="/web/WEB-INF/layout/layout.jsp">
         <put-attribute name="title" 	value="Index" />
-        <put-attribute name="include"   value="/WEB-INF/layout/include.jsp" />
-        <put-attribute name="header" 	value="/WEB-INF/layout/header.jsp" />
-        <put-attribute name="sidebar" 	value="/WEB-INF/layout/sidebar.jsp" />
+        <put-attribute name="include"   value="/web/WEB-INF/layout/include.jsp" />
+        <put-attribute name="header" 	value="/web/WEB-INF/layout/header.jsp" />
+        <put-attribute name="sidebar" 	value="/web/WEB-INF/layout/sidebar.jsp" />
         <put-attribute name="active" 	value="" />
         <put-attribute name="body" 		value="" />
     </definition>
 
     <!--Products-->
     <definition name="products/index" extends="layout">
-        <put-attribute name="active"    value="/WEB-INF/products/indexSidebar.jsp" />
-        <put-attribute name="body"      value="/WEB-INF/products/index.jsp" />
+        <put-attribute name="active"    value="/web/WEB-INF/products/indexSidebar.jsp" />
+        <put-attribute name="body"      value="/web/WEB-INF/products/index.jsp" />
     </definition>
 
     <definition name="products/show" extends="layout">
-        <put-attribute name="body"      value="/WEB-INF/products/show.jsp" />
+        <put-attribute name="body"      value="/web/WEB-INF/products/show.jsp" />
     </definition>
 
     <definition name="products/new" extends="layout">
-        <put-attribute name="body"      value="/WEB-INF/products/new.jsp" />
+        <put-attribute name="body"      value="/web/WEB-INF/products/new.jsp" />
     </definition>
 
 </tiles-definitions>
