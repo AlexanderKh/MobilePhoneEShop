@@ -16,24 +16,24 @@ public class CustomerDAO implements ksk.dao.CustomerDAO {
     SessionFactory sessionFactory;
 
     @Transactional
-    public List<Customer> getCustomers() {
+    public List<Customer> getAll() {
         Session session = sessionFactory.getCurrentSession();
         SQLQuery sqlQuery = session.createSQLQuery("SELECT CUSTOMER.* FROM CUSTOMER");
         return sqlQuery.addEntity(Customer.class).list();
     }
 
     @Transactional
-    public Customer getCustomer(int id) {
+    public Customer getByID(int id) {
         return (Customer) sessionFactory.getCurrentSession().get(Customer.class, id);
     }
 
     @Transactional
-    public void saveCustomer(Customer customer) {
+    public void save(Customer customer) {
         sessionFactory.getCurrentSession().save(customer);
     }
 
     @Transactional
-    public void removeCustomerByID(Integer customerID) {
+    public void deleteByID(Integer customerID) {
         Session session = sessionFactory.getCurrentSession();
         SQLQuery sqlQuery = session.createSQLQuery("DELETE FROM CUSTOMER WHERE ID = :customerID");
         sqlQuery.setParameter("customerID", customerID);

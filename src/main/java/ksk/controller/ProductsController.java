@@ -40,12 +40,12 @@ public class ProductsController {
         Product product = new Product();
 
         modelMap.addAttribute("product", product);
+
         return "products/new";
     }
 
     @RequestMapping(value = "new", method = RequestMethod.POST)
-    public String create(@ModelAttribute Product product,
-                         BindingResult bindingResult){
+    public String create(@ModelAttribute Product product){
         shopService.addProduct(product);
 
         return "redirect:/products";
@@ -54,6 +54,7 @@ public class ProductsController {
     @RequestMapping(value = "{id}/delete", method = RequestMethod.POST)
     public String destroy(@PathVariable("id") Integer productID){
         shopService.removeProductByID(productID);
+
         return "redirect:/products";
     }
 }

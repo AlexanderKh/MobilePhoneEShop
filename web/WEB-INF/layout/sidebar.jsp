@@ -7,3 +7,4 @@
 </script>
 
 <a href="<c:url value="/products"/>" class="text-center list-group-item">Products</a>
+<a href="<c:url value="/customers"/>" class="text-center list-group-item">Customers</a>

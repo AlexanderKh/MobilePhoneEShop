@@ -17,24 +17,24 @@ public class ProductDAO implements ksk.dao.ProductDAO {
     SessionFactory sessionFactory;
 
     @Transactional
-    public List<Product> getProducts() {
+    public List<Product> getAll() {
         Session session = sessionFactory.getCurrentSession();
         SQLQuery sqlQuery = session.createSQLQuery("SELECT PRODUCT.* FROM PRODUCT");
         return sqlQuery.addEntity(Product.class).list();
     }
 
     @Transactional
-    public Product getProduct(int id) {
+    public Product getByID(int id) {
         return (Product) sessionFactory.getCurrentSession().get(Product.class, id);
     }
 
     @Transactional
-    public void saveProduct(Product product) {
+    public void save(Product product) {
         sessionFactory.getCurrentSession().save(product);
     }
 
     @Transactional
-    public void removeProductByID(Integer productID) {
+    public void deleteByID(Integer productID) {
         Session session = sessionFactory.getCurrentSession();
         SQLQuery sqlQuery = session.createSQLQuery("DELETE FROM PRODUCT WHERE ID = :productID");
         sqlQuery.setParameter("productID", productID);

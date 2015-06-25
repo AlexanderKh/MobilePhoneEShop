@@ -2,18 +2,18 @@ package ksk.entity;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 
 @Entity
-public class Purchase {
+public class Purchase implements Comparable{
     @Id
     @GeneratedValue
     private Integer id;
     private BigDecimal sum;
+    private Date date;
     @ManyToOne
     private Customer customer;
-    @ManyToMany
-    private List<Product> products;
 
     public Integer getId() {
         return id;
@@ -39,11 +39,19 @@ public class Purchase {
         this.customer = customer;
     }
 
-    public List<Product> getProducts() {
-        return products;
+    public Date getDate() {
+        return date;
     }
 
-    public void setProducts(List<Product> products) {
-        this.products = products;
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public int compareTo(Object o) {
+        if (o instanceof Purchase){
+            return this.date.compareTo(((Purchase) o).date);
+        } else {
+            throw new ClassCastException();
+        }
     }
 }

@@ -8,11 +8,11 @@
         <form:input path="name" cssClass="form-control" />
     </div>
     <div class="form-group">
-        <label for="surname">Price</label>
+        <label for="surname">Surname</label>
         <form:input path="surname" cssClass="form-control" />
     </div>
     <div class="form-group">
-        <label for="account">Quantity</label>
+        <label for="account">Account</label>
         <form:input path="account" cssClass="form-control" />
     </div>
     <div class="form-group">

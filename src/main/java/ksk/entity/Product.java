@@ -13,8 +13,6 @@ public class Product implements Serializable{
     private String brand;
     private String name;
     private BigDecimal price;
-    @ManyToMany
-    private List<Purchase> purchases;
 
     public Integer getId() {
         return id;
