@@ -2,6 +2,8 @@ package ksk.service.impl;
 
 import ksk.dao.ProductDAO;
 import ksk.entity.Product;
+import ksk.dao.CustomerDAO;
+import ksk.entity.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +13,8 @@ import java.util.List;
 public class ShopService implements ksk.service.ShopService{
     @Autowired
     ProductDAO productDAO;
-
+    @Autowired
+    CustomerDAO customerDAO;
 
     public List<Product> getProducts() {
         return productDAO.getProducts();
@@ -32,6 +35,27 @@ public class ShopService implements ksk.service.ShopService{
 
     public void removeProductByID(Integer productID) {
         productDAO.removeProductByID(productID);
+    }
+
+    public List<Customer> getCustomers() {
+        return customerDAO.getCustomers();
+    }
+
+
+    public Customer getCustomerByID(Integer customerID) {
+        return customerDAO.getCustomer(customerID);
+    }
+
+    public void addCustomer(Customer customer, Integer customerID) {
+        customerDAO.saveCustomer(customer);
+    }
+
+    public void addCustomer(Customer customer) {
+        customerDAO.saveCustomer(customer);
+    }
+
+    public void removeCustomerByID(Integer customerID) {
+        customerDAO.removeCustomerByID(customerID);
     }
 
 }
