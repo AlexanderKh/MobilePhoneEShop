@@ -15,6 +15,10 @@ public class PurchaseDAO implements ksk.dao.PurchaseDAO {
     @Autowired
     SessionFactory sessionFactory;
 
+    public void save(Purchase purchase) {
+        sessionFactory.getCurrentSession().save(purchase);
+    }
+
     @Transactional
     public List<Purchase> getByCustomerID(Integer customerID) {
         Session session = sessionFactory.getCurrentSession();
@@ -30,6 +34,8 @@ public class PurchaseDAO implements ksk.dao.PurchaseDAO {
         sqlQuery.setParameter("customerID", customerID);
         sqlQuery.executeUpdate();
     }
+
+
 
     @Transactional
     public Purchase getByID(Integer purchaseID) {

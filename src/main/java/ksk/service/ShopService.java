@@ -27,11 +27,19 @@ public interface ShopService {
 
     List<Purchase> getPurchasesByCustomerID(Integer customerID);
 
-    Integer checkUnresolvedPurchase(List<Purchase> purchases);
+    Integer checkAndRemoveUnresolvedPurchase(List<Purchase> purchases);
 
-    void addPurchaseByCustomerID(Integer customerID);
+    Integer addPurchaseByCustomerID(Integer customerID);
 
     Purchase getPurchaseByID(Integer purchaseID);
 
     List<Order> getOrdersByPurchaseID(Integer purchaseID);
+
+    List<Product> getPossibleProductsByPurchaseID(Integer purchaseID);
+
+    void addNewProductToPurchase(Integer purchaseID, Integer productID);
+
+    void commitPurchaseByID(Integer purchaseID);
+
+    void clearPurchaseByID(Integer purchaseID);
 }

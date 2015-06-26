@@ -20,8 +20,8 @@ public class PurchaseController {
     ShopService shopService;
 
     @RequestMapping("{purchaseID}")
-    public String show(@PathVariable("customerID") Integer customerID,
-                       @PathVariable("purchaseID") Integer purchaseID,
+    public String show(@PathVariable Integer customerID,
+                       @PathVariable Integer purchaseID,
                        ModelMap modelMap){
         Customer customer = shopService.getCustomerByID(customerID);
         Purchase purchase = shopService.getPurchaseByID(purchaseID);
@@ -30,15 +30,35 @@ public class PurchaseController {
         modelMap.addAttribute("customer", customer);
         modelMap.addAttribute("purchase", purchase);
         modelMap.addAttribute("orders", orders);
+        modelMap.addAttribute("isCommitable", orders.size() != 0);
 
         return "purchases/show";
     }
 
-    @RequestMapping("new")
-    public String create(@PathVariable("customerID") Integer customerID,
+    @RequestMapping(value = "new", method = RequestMethod.POST)
+    public String create(@PathVariable Integer customerID,
                          ModelMap modelMap){
-        shopService.addPurchaseByCustomerID(customerID);
+        Integer newID = shopService.addPurchaseByCustomerID(customerID);
 
-        return "redirect:..";
+        return "redirect:/customers/" + customerID + "/purchases/" + newID;
     }
+
+    @RequestMapping(value = "{purchaseID}/end", method = RequestMethod.POST)
+    public String commit(@PathVariable Integer customerID,
+                         @PathVariable Integer purchaseID,
+                         ModelMap modelMap){
+        shopService.commitPurchaseByID(purchaseID);
+
+        return "redirect:/customers/" + customerID;
+    }
+
+    @RequestMapping(value = "{purchaseID}/clear", method = RequestMethod.POST)
+    public String clear(@PathVariable Integer customerID,
+                         @PathVariable Integer purchaseID,
+                         ModelMap modelMap){
+        shopService.clearPurchaseByID(purchaseID);
+
+        return "redirect:/customers/" + customerID + "/purchases/" + purchaseID;
+    }
+
 }

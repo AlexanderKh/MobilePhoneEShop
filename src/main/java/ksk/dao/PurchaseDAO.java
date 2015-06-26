@@ -5,6 +5,8 @@ import ksk.entity.Purchase;
 import java.util.List;
 
 public interface PurchaseDAO {
+    void save(Purchase purchase);
+
     List<Purchase> getByCustomerID(Integer customerID);
 
     void addByCustomerID(Integer customerID);

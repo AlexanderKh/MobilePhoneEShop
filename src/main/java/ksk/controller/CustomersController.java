@@ -33,7 +33,7 @@ public class CustomersController {
                        ModelMap model){
         Customer customer = shopService.getCustomerByID(customerID);
         List<Purchase> purchases = shopService.getPurchasesByCustomerID(customerID);
-        Integer unresolvedPurchaseID = shopService.checkUnresolvedPurchase(purchases);
+        Integer unresolvedPurchaseID = shopService.checkAndRemoveUnresolvedPurchase(purchases);
 
         model.addAttribute("customer", customer);
         model.addAttribute("purchases", purchases);

@@ -1,5 +1,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <c:if test="${!hasUnresolvedPurchase}">
-    <a href="purchases/new" class="text-center list-group-item list-group-item-success">Buy</a>
+    <form action="/customers/${customer.id}/purchases/new"
+          style="margin-bottom: 0px"
+          method="post">
+        <button type="submit"
+                class="text-center list-group-item list-group-item-success">
+            Buy
+        </button>
+    </form>
 </c:if>

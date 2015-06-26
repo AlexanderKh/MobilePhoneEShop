@@ -15,9 +15,9 @@
       <td>${product.name}</td>
       <td>${product.price}</td>
       <td>
-        <form action="/customers/${customer.id}/${purchase.id}/new"
-              style="margin-bottom: 0px"
-              method="post">
+        <form action="/customers/${customerID}/purchases/${purchaseID}/orders/new"
+              method="post"
+              style="margin-bottom: 0px">
           <input type="hidden" name="productID" value="${product.id}">
           <button type="submit"
                   class="btn btn-xs btn-default">

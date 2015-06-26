@@ -13,8 +13,8 @@
     </tr>
     <c:forEach var="order" items="${orders}">
         <tr>
-            <td>${order.purchase.brand}</td>
-            <td>${order.purchase.name}</td>
+            <td>${order.product.brand}</td>
+            <td>${order.product.name}</td>
             <td>${order.price}</td>
         </tr>
     </c:forEach>
@@ -24,13 +24,18 @@
     Total sum is ${purchase.sum}
 </h4>
 <c:if test="${purchase.date == null}">
-    <form action="end" method="post"
-          class="form-control">
-        <button type="submit" class="btn btn-danger">END</button>
-    </form>
-    <br>
-    <form action="new" method="get"
-          class="form-control">
-        <button type="submit" class="btn btn-success">Add product</button>
+    <c:if test="${isCommitable}">
+        <form action="/customers/${customer.id}/purchases/${purchase.id}/end" method="post"
+              class="form-group">
+            <button type="submit" class="btn btn-danger">Order</button>
+        </form>
+        <form action="/customers/${customer.id}/purchases/${purchase.id}/clear" method="post"
+              class="form-group">
+            <button type="submit" class="btn btn-warning">Clear</button>
+        </form>
+    </c:if>
+    <form action="/customers/${customer.id}/purchases/${purchase.id}/orders/new" method="get"
+          class="form-group">
+        <button type="submit" class="btn btn-success">Add new product to basket</button>
     </form>
 </c:if>

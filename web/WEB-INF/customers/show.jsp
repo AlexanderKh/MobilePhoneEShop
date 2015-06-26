@@ -7,7 +7,7 @@
 <c:if test="${hasUnresolvedPurchase}">
     <h4>
         You have unresolved purchase
-        <a href="${customer.id}/purchases/${unresolvedPurchaseID}" class="btn btn-success">Resolve</a>
+        <a href="/customers/${customer.id}/purchases/${unresolvedPurchaseID}" class="btn btn-success">Resolve</a>
     </h4>
     <hr>
 </c:if>
@@ -21,7 +21,7 @@
       <td>${purchase.date}</td>
       <td>${purchase.sum}</td>
         <td>
-            <a href="<c:url value="${purchase.id}"/>" class="btn btn-xs btn-info">Show</a>
+            <a href="/customers/${customer.id}/purchases/${purchase.id}" class="btn btn-xs btn-info">Show</a>
         </td>
     </tr>
   </c:forEach>

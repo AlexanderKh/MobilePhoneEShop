@@ -1,1 +1,1 @@
-<a href="../" class="text-center list-group-item list-group-item-success">Back to Customer</a>
+<a href="/customers/${customer.id}/purchases/${purchase.id}" class="text-center list-group-item list-group-item-success">Back to Purchase</a>
