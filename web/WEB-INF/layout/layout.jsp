@@ -22,7 +22,7 @@
             <tiles:insertAttribute name="body" />
         </div>
     </div>
-    <footer>
+    <footer class="modal-footer">
         Виконали ШЕВА І САНЬОК
     </footer>
 </body>

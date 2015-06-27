@@ -8,6 +8,6 @@ import sun.misc.Contended;
 public class IndexController {
     @RequestMapping("/")
     public String index(){
-        return "redirect:/products";
+        return "redirect:/customers";
     }
 }

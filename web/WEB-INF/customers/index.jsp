@@ -11,7 +11,7 @@
                 <td>${customer.surname}</td>
                 <td>${customer.account}</td>
                 <td>
-                    <a href="<c:url value="/customers/${customer.id}"/>" class="btn btn-xs btn-info">Purchases</a>
+                    <a href="/customers/${customer.id}" class="btn btn-xs btn-info">Purchases</a>
                 </td>
                 <td>
                     <form action="/customers/${customer.id}/delete"

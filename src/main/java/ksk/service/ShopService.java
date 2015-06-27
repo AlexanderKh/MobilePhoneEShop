@@ -1,8 +1,8 @@
 package ksk.service;
 
+import ksk.entity.Customer;
 import ksk.entity.Order;
 import ksk.entity.Product;
-import ksk.entity.Customer;
 import ksk.entity.Purchase;
 
 import java.util.List;
@@ -17,7 +17,6 @@ public interface ShopService {
     void addProduct(Product product);
 
     void removeProductByID(Integer productID);
-
 
     Customer getCustomerByID(Integer customerID);
 

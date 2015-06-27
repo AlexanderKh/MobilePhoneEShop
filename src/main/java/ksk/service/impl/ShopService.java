@@ -1,12 +1,12 @@
 package ksk.service.impl;
 
+import ksk.dao.CustomerDAO;
 import ksk.dao.OrderDAO;
 import ksk.dao.ProductDAO;
 import ksk.dao.PurchaseDAO;
+import ksk.entity.Customer;
 import ksk.entity.Order;
 import ksk.entity.Product;
-import ksk.dao.CustomerDAO;
-import ksk.entity.Customer;
 import ksk.entity.Purchase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +17,7 @@ import java.util.Date;
 import java.util.List;
 
 @Service
+@Transactional
 public class ShopService implements ksk.service.ShopService{
     @Autowired
     ProductDAO productDAO;
@@ -56,6 +57,11 @@ public class ShopService implements ksk.service.ShopService{
     }
 
     public void removeCustomerByID(Integer customerID) {
+        List<Purchase> purchases = purchaseDAO.getByCustomerID(customerID);
+        for (Purchase purchase : purchases){
+            orderDAO.deleteByPurchaseID(purchase.getId());
+            purchaseDAO.deleteByID(purchase.getId());
+        }
         customerDAO.deleteByID(customerID);
     }
 
@@ -75,7 +81,6 @@ public class ShopService implements ksk.service.ShopService{
         return null;
     }
 
-    @Transactional
     public Integer addPurchaseByCustomerID(Integer customerID) {
         Customer customer = customerDAO.getByID(customerID);
         Purchase purchase = new Purchase();
@@ -93,12 +98,10 @@ public class ShopService implements ksk.service.ShopService{
         return orderDAO.getByPurchaseID(purchaseID);
     }
 
-    @Transactional
     public List<Product> getPossibleProductsByPurchaseID(Integer purchaseID) {
         return productDAO.getAll();
     }
 
-    @Transactional
     public void addNewProductToPurchase(Integer purchaseID, Integer productID) {
         Purchase purchase = purchaseDAO.getByID(purchaseID);
         Product product = productDAO.getByID(productID);
@@ -111,13 +114,11 @@ public class ShopService implements ksk.service.ShopService{
         purchase.setSum(currentPurchaseSum.add(order.getPrice()));
     }
 
-    @Transactional
     public void commitPurchaseByID(Integer purchaseID) {
         Purchase purchase = purchaseDAO.getByID(purchaseID);
         purchase.setDate(new Date());
     }
 
-    @Transactional
     public void clearPurchaseByID(Integer purchaseID) {
         Purchase purchase = purchaseDAO.getByID(purchaseID);
         purchase.setSum(BigDecimal.ZERO);

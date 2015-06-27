@@ -14,5 +14,4 @@ public interface ProductDAO {
 
     void deleteByID(Integer productID);
 
-    List<Product> getPossibleByPurchaseID(Integer purchaseID);
 }

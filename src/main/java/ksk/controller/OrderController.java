@@ -38,6 +38,6 @@ public class OrderController {
                          ModelMap modelMap){
         shopService.addNewProductToPurchase(purchaseID, productID);
 
-        return "redirect:..";
+        return "redirect:/customers/" + customerID + "/purchases/" + purchaseID;
     }
 }

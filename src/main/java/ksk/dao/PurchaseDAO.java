@@ -9,7 +9,7 @@ public interface PurchaseDAO {
 
     List<Purchase> getByCustomerID(Integer customerID);
 
-    void addByCustomerID(Integer customerID);
-
     Purchase getByID(Integer purchaseID);
+
+    void deleteByID(Integer id);
 }
